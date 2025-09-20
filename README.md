@@ -66,6 +66,15 @@ After running the pipeline, you will also find these PNG files:
 
 These help you interpret model performance and feature relevance visually.
 
+### Feature Importance
+![Feature Importance](feature_importance.png)
+
+### Prediction vs Actual (Train)
+![Prediction vs Actual - Train](train_pred_vs_actual.png)
+
+### Prediction vs Actual (Test)
+![Prediction vs Actual - Test](test_pred_vs_actual.png)
+
 ---
 
 ## 4. Example Output
