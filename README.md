@@ -209,3 +209,11 @@ All data, models, and metrics are tracked by DVC. This ensures you can reproduce
 
 ## 11. Getting Help / Improving
 
+If you have questions, encounter issues, or want to suggest improvements:
+
+- **Open an Issue:** Use the GitHub Issues tab to report bugs, request features, or ask questions.
+- **Contribute:** Fork the repository, make your changes, and submit a pull request. Contributions are welcome!
+- **Contact:** For direct help, you can reach out via GitHub or email (anviapna541@gmail.com).
+
+Please provide clear details and, if possible, sample data or error messages to help resolve your issue quickly.
+
