@@ -50,7 +50,21 @@ def main():
     with open(EVAL_FILE, "w") as f:
         json.dump(eval_results, f, indent=4)
 
+
+    # Visualization: Prediction vs Actual (Test)
+    import matplotlib.pyplot as plt
+    plt.figure(figsize=(6, 6))
+    plt.scatter(y, y_pred, alpha=0.5)
+    plt.xlabel('Actual CPU Usage')
+    plt.ylabel('Predicted CPU Usage')
+    plt.title('Prediction vs Actual (Test)')
+    plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--')
+    plt.tight_layout()
+    plt.savefig('test_pred_vs_actual.png')
+    plt.close()
+
     print(f"Evaluation complete. Results saved to {EVAL_FILE}")
+    print("Prediction vs Actual plot saved as test_pred_vs_actual.png")
 
 if __name__ == "__main__":
     main()

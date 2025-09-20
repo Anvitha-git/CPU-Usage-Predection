@@ -31,7 +31,7 @@ def main():
 
     # evaluate on training set (baseline metrics)
     preds = model.predict(X)
-    
+
     from math import sqrt
 
     metrics = {
@@ -45,8 +45,36 @@ def main():
     with open(METRICS_FILE, "w") as f:
         json.dump(metrics, f, indent=4)
 
+
+    # Visualizations
+    import matplotlib.pyplot as plt
+
+    # Feature importance
+    importances = model.feature_importances_
+    feature_names = X.columns
+    plt.figure(figsize=(8, 5))
+    plt.barh(feature_names, importances)
+    plt.xlabel('Importance')
+    plt.title('Feature Importance')
+    plt.tight_layout()
+    plt.savefig('feature_importance.png')
+    plt.close()
+
+    # Prediction vs Actual
+    plt.figure(figsize=(6, 6))
+    plt.scatter(y, preds, alpha=0.5)
+    plt.xlabel('Actual CPU Usage')
+    plt.ylabel('Predicted CPU Usage')
+    plt.title('Prediction vs Actual (Train)')
+    plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--')
+    plt.tight_layout()
+    plt.savefig('train_pred_vs_actual.png')
+    plt.close()
+
     print(f"✅ Model trained and saved to {MODEL_FILE}")
     print("Metrics:", metrics)
+    print("Feature importance plot saved as feature_importance.png")
+    print("Prediction vs Actual plot saved as train_pred_vs_actual.png")
 
 if __name__ == "__main__":
     main()

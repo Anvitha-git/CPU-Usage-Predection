@@ -1,41 +1,10 @@
----
-
-## 10. Example Output
-
-After running the pipeline, you can view your metrics in the terminal:
-
-```
-type metrics.json
-type eval.json
-```
-
-Sample output:
-
-**metrics.json** (training metrics)
-```json
-{
-   "mae": 0.008293341766947319,
-   "rmse": 0.024439013641369665,
-   "r2": 0.8583929309676535
-}
-```
-
-**eval.json** (evaluation metrics)
-```json
-{
-   "MAE": 0.008631927519482186,
-   "RMSE": 0.027657911892549097,
-   "R2": 0.7968982110132168
-}
-```
-
-Your results may vary depending on your data and model configuration.
 
 # CPU Usage Prediction Pipeline
 
 This project predicts CPU usage for Kubernetes workloads using a machine learning pipeline managed by DVC (Data Version Control). It is designed for reproducible data science and model training.
 
 ---
+
 
 ## 1. Project Structure & File Roles
 
@@ -52,6 +21,7 @@ This project predicts CPU usage for Kubernetes workloads using a machine learnin
 - `requirements.txt`: List of required Python packages.
 
 ---
+
 
 ## 2. Step-by-Step Usage Instructions
 
@@ -86,7 +56,53 @@ DVC will automatically detect changes and only rerun necessary stages. Outputs a
 
 ---
 
-## 3. DVC Pipeline Stages Explained
+## 3. Visualization Outputs
+
+After running the pipeline, you will also find these PNG files:
+
+- `feature_importance.png`: Bar plot showing the importance of each feature in the trained model (from training data).
+- `train_pred_vs_actual.png`: Scatter plot comparing predicted vs actual CPU usage on the training set.
+- `test_pred_vs_actual.png`: Scatter plot comparing predicted vs actual CPU usage on the test set.
+
+These help you interpret model performance and feature relevance visually.
+
+---
+
+## 4. Example Output
+
+After running the pipeline, you can view your metrics in the terminal:
+
+```powershell
+type metrics.json
+type eval.json
+```
+
+Sample output:
+
+**metrics.json** (training metrics)
+```json
+{
+   "mae": 0.008293341766947319,
+   "rmse": 0.024439013641369665,
+   "r2": 0.8583929309676535
+}
+```
+
+**eval.json** (evaluation metrics)
+```json
+{
+   "MAE": 0.008631927519482186,
+   "RMSE": 0.027657911892549097,
+   "R2": 0.7968982110132168
+}
+```
+
+Your results may vary depending on your data and model configuration.
+
+---
+
+
+## 5. DVC Pipeline Stages Explained
 
 **preprocess**
 - Command: `python src/preprocess.py`
@@ -105,7 +121,8 @@ DVC will automatically detect changes and only rerun necessary stages. Outputs a
 
 ---
 
-## 4. How Each Script Works
+
+## 6. How Each Script Works
 
 ### preprocess.py
 - Loads raw data
@@ -131,7 +148,8 @@ DVC will automatically detect changes and only rerun necessary stages. Outputs a
 
 ---
 
-## 5. Extending the Project
+
+## 7. Extending the Project
 
 - **Add Visualizations:**
    - Use matplotlib/seaborn in `train.py` or `evaluate.py` to plot feature importance, prediction vs actual, error distributions, etc.
@@ -144,7 +162,8 @@ DVC will automatically detect changes and only rerun necessary stages. Outputs a
 
 ---
 
-## 6. Troubleshooting & Tips
+
+## 8. Troubleshooting & Tips
 
 - If you get errors about missing columns, check your raw data format and feature lists.
 - If DVC skips stages, it means inputs/outputs haven't changed. Force rerun with `dvc repro --force`.
@@ -153,7 +172,8 @@ DVC will automatically detect changes and only rerun necessary stages. Outputs a
 
 ---
 
-## 7. Requirements
+
+## 9. Requirements
 
 - Python 3.8+
 - pandas
@@ -170,12 +190,13 @@ pip install -r requirements.txt
 
 ---
 
-## 8. Reproducibility
+
+## 10. Reproducibility
 
 All data, models, and metrics are tracked by DVC. This ensures you can reproduce results and share your pipeline with others.
 
 ---
 
-## 9. Getting Help / Improving
 
-For questions, improvements, or to extend the pipeline, open an issue or ask for help!
+## 11. Getting Help / Improving
+
